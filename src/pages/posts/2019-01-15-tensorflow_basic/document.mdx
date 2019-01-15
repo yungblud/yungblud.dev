@@ -105,4 +105,81 @@ Activation function defines the result value which has been passed. This functio
 2. 역전파
    - 결과값의 오차를 앞쪽으로 전파하면서 가중치를 갱신
 
+`tensorflow-basic.py`
+
+```python
+import tensorflow as tf
+
+hello = tf.constant('Hello, Tensorflow!')
+
+a = tf.constant(0)
+b = tf.constant(1000)
+c = tf.add(a, b)
+
+sess = tf.Session()
+print(sess.run(hello))
+print(sess.run([a, b, c]))
+
+sess.close()
+
+X = tf.placeholder(tf.float32, [None, 3])
+
+x_data = [[1, 2, 3], [4, 5, 6]]
+
+W = tf.Variable(tf.random_normal([3, 2]))
+b = tf.Variable(tf.random_normal([2, 1]))
+expr = tf.matmul(X, W) + b
+
+sess = tf.Session()
+sess.run(tf.global_variables_initializer())
+
+print('---x_data---')
+print(x_data)
+print('---W---')
+print(sess.run(W))
+print('---b---')
+print(sess.run(b))
+print('---expr---')
+print(sess.run(expr, feed_dict={X: x_data}))
+
+sess.close()
+
+```
+
+`linear-regression-model.py`
+
+```python
+import tensorflow as tf
+
+x_data = [1, 2, 3]
+y_data = [1, 2, 3]
+
+W = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
+b = tf.Variable(tf.random_uniform([1], -1.0, 1.0))
+
+X = tf.placeholder(tf.float32, name = "X")
+Y = tf.placeholder(tf.float32, name = "Y")
+
+hypothesis = W * X + b
+
+cost = tf.reduce_mean(tf.square(hypothesis - Y))
+
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.1)
+train_op = optimizer.minimize(cost)
+
+
+
+sess = tf.Session()
+sess.run(tf.global_variables_initializer())
+
+for step in range(100):
+    _, cost_val = sess.run([train_op, cost], feed_dict={X: x_data, Y: y_data})
+    print(step, cost_val, sess.run(W), sess.run(b))
+
+print("X: 5, Y:", sess.run(hypothesis, feed_dict={X: 5}))
+print("X: 2.5, Y:", sess.run(hypothesis, feed_dict={X: 2.5}))
+
+sess.close()
+```
+
 </div>
