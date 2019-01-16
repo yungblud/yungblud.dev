@@ -150,6 +150,7 @@ sess.close()
 
 ```python
 import tensorflow as tf
+import matplotlib.pyplot as plt
 
 x_data = [1, 2, 3]
 y_data = [1, 2, 3]
@@ -178,6 +179,17 @@ for step in range(100):
 
 print("X: 5, Y:", sess.run(hypothesis, feed_dict={X: 5}))
 print("X: 2.5, Y:", sess.run(hypothesis, feed_dict={X: 2.5}))
+
+
+plt.figure(1)
+plt.title('Linear Regression')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.plot(x_data, y_data, 'ro')
+plt.plot(x_data, sess.run(W) * x_data + sess.run(b), 'b')
+plt.plot([5], sess.run(hypothesis, feed_dict={X: 5}), 'go')
+plt.show()
+
 
 sess.close()
 ```
