@@ -1,9 +1,9 @@
 export default {
   // The blog's title as it appears in the layout header, and in the document
   // <title> tag.
-  title: "develician.wtf",
+  title: "yungblud.dev",
 
-  author: "develician",
+  author: "yungblud",
   description: "jailbreak & js & deep learning",
 
   // The number of posts to a page on the site index.
