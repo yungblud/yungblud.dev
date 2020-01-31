@@ -1,0 +1,41 @@
+import styles from "./document.module.css";
+
+<div className={styles.ImageStyle}>
+
+# 자바스크립트의 암호화
+
+## module Crypto
+
+```bash
+$ yarn add crypto
+```
+
+## 단방향 암호화
+
+* 키를 사용하여 복호화 시킬수 없는 암호화 방식을 단방향 암호화 라고 한다.
+* ex) hash
+
+### crypto.createHmac(algorithm, key[, options])
+
+`algorithm`: 'sha256', 'sha512' 등의 알고리즘 값이 문자열로 들어간다.
+`key`: secretKey 값.
+
+
+```js
+import crypto from 'crypto';
+
+const secretKey = '1234#$%%';
+const pure = 'abcdefg';
+
+const hmac = crypto.createHmac('sha256', secretKey); 
+// hmac 변수에 저장된 값은, Hmac 클래스 값이다. 따라서 crypto.createHmac 함수를 실행하면, Hmac 클래스값을 반환시킨다.
+hmac.update(pure);
+// Hmac 클래스의 update() 메서드를 통해 data (이곳에서는 pure라는 string)를 
+```
+
+## 양방향 암호화
+
+* 키를 사용하여 복호화 시킬수 있는 암호화 방식을 양방향 암호화 라고 한다.
+* ex) aes
+
+</div>
