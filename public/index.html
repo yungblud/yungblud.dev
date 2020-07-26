@@ -12,7 +12,7 @@
       homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <script async src="%PUBLIC_URL%/js/twitterWidgets.js" charset="utf-8" crossorigin="anonymous"></script>
+  <script async src="%PUBLIC_URL%/js/twitterWidgets.js" charset="utf-8"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132543994-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -22,6 +22,9 @@
     gtag("js", new Date());
 
     gtag("config", "UA-132543994-1");
+  </script>
+  <script>
+    document.cookie = "SameSite=None; Secure";
   </script>
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
